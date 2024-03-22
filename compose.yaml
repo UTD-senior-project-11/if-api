@@ -5,7 +5,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: test
     ports:
-      - 3306:3306
+      - 3307:3307
     volumes:
       - ./mysql:/var/lib/mysql
     

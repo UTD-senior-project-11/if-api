@@ -15,7 +15,7 @@ public class Backend {
 
 		try{
 			//Establish connection
-			String dbURL = "jdbc:mysql://mysql:3306/";
+			String dbURL = "jdbc:mysql://mysql:3307/";
 			String dbUser = "root";
 			String dbPass = "test";
 			Connection conn = null;
