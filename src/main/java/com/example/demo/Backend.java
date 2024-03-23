@@ -21,11 +21,15 @@ public class Backend {
 			Connection conn = null;
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
+
+			/*
 			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO UTDesign11.Administrator VALUES (?, ?, ?)");
             	pstmt.setString(1, "123");
             	pstmt.setString(2, "hello");
             	pstmt.setString(3, "there");
             	pstmt.executeUpdate();
+			*/
+
 			//Create blank Account object
 			Account userAccount = new Account();
 
