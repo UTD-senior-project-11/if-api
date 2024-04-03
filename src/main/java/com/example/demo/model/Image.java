@@ -1,4 +1,4 @@
-package com.utdesign.if_api;
+package com.example.demo.model;
 
 import java.sql.*;
 import jakarta.persistence.Entity;
@@ -23,14 +23,14 @@ public class Image {
         this. imageSize = imageSize;
     }
 
-    //Getters
+    //Accessors
     public int getImageID(){return imageID;}
 
     public Blob getImageData(){return imageData;}
 
     public int imageSize(){return imageSize;}
 
-    //Setters
+    //Mutators
     public void setImageID(int imageID){this.imageID = imageID;}
 
     public void setImageData(Blob imageData){this.imageData = imageData;}

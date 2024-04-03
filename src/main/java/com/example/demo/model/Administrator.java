@@ -1,4 +1,4 @@
-package com.utdesign.if_api;
+package com.example.demo.model;
 
 import java.util.Random;
 
@@ -16,7 +16,9 @@ public class Administrator {
     private String adminPass;
 
     //Constructors
-    public Administrator(){}
+    public Administrator(){
+        this.adminID = generateAdminID();
+    }
 
     public Administrator(String adminUser, String adminPass){
         this.adminID = generateAdminID();
@@ -24,7 +26,7 @@ public class Administrator {
         this.adminPass = adminPass;
     }
 
-    //Getters
+    //Accessors
     public String getAdminID(){
         return adminID; 
     }
@@ -37,7 +39,7 @@ public class Administrator {
         return adminPass;
     }
 
-    //Setters
+    //Mutators
     public void setAdminID(String adminID){
         this.adminID = adminID;
     }
