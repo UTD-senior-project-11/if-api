@@ -7,7 +7,7 @@ import com.example.demo.service.ImageService;
 import com.example.demo.service.ImageServiceCont;
 
 @RestController
-@RequestMapping("/image")
+@RequestMapping("image")
 @CrossOrigin
 public class ImageController {
     @Autowired

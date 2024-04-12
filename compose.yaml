@@ -8,6 +8,7 @@ services:
       - 3307:3306
     volumes:
       - ./mysql:/var/lib/mysql
+    network_mode: host
     
   server:
     build:
@@ -16,3 +17,4 @@ services:
       - 4000:4000
     volumes:
       - ./src:/app/src
+    network_mode: host
