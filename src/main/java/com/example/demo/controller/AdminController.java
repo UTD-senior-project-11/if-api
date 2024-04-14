@@ -19,6 +19,14 @@ public class AdminController {
         return "Your administrator account has been created";
     }
 
-    //@PostMapping("/login") //Finish
-
+    @GetMapping("/login")
+    public boolean login(@RequestBody Administrator admin){
+        if(adminService.checkAdmin(admin) == false){
+            return false; 
+            //"Error; no account found. Please sign up"; 
+        } else {
+            return true;
+            //"Login successful";
+        }
+    }
 }

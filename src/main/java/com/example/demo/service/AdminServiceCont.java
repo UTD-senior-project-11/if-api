@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import com.example.demo.model.Administrator;
 import com.example.demo.repository.AdminRepository;
@@ -14,5 +15,10 @@ public class AdminServiceCont implements AdminService {
     @Override
     public Administrator saveAdmin(Administrator admin){
         return adminRepository.save(admin);
+    }
+
+    @Override
+    public boolean checkAdmin(Administrator admin){
+        return adminRepository.exists((Example<Administrator>) admin);
     }
 }
