@@ -5,7 +5,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: test
     ports:
-      - 3307:3306
+      - 3306:3306
     volumes:
       - ./mysql:/var/lib/mysql
     network_mode: host
@@ -14,7 +14,7 @@ services:
     build:
       context: .
     ports:
-      - 4000:4000
+      - 8082:8082
     volumes:
       - ./src:/app/src
     network_mode: host
