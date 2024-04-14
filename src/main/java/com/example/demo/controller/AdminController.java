@@ -7,7 +7,7 @@ import com.example.demo.service.AdminServiceCont;
 import com.example.demo.model.Administrator;
 
 @RestController
-@RequestMapping("administrator")
+@RequestMapping("Administrator")
 @CrossOrigin
 public class AdminController {
     @Autowired
