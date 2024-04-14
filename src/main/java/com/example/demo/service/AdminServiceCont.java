@@ -12,7 +12,7 @@ public class AdminServiceCont implements AdminService {
     private AdminRepository adminRepository;
 
     @Override
-    public Administrator saveAdmin(Administrator admin){
-        return adminRepository.save(admin);
+    public void saveAdmin(Administrator admin){
+        adminRepository.saveAdministrator(admin.getAdminUser(), admin.getAdminPass());
     }
 }

@@ -4,5 +4,5 @@ import com.example.demo.model.Administrator;
 
 //Needs more
 public interface AdminService {
-    public Administrator saveAdmin(Administrator admin);
+    public void saveAdmin(Administrator admin);
 }

@@ -7,7 +7,7 @@ import com.example.demo.service.AdminServiceCont;
 import com.example.demo.model.Administrator;
 
 @RestController
-@RequestMapping("Administrator")
+@RequestMapping("administrator")
 @CrossOrigin
 public class AdminController {
     @Autowired
@@ -15,6 +15,7 @@ public class AdminController {
 
     @PostMapping("/signup")
     public String signup(@RequestBody Administrator admin){
+        System.out.println("\n\n\n" + admin.getAdminID() + " " + admin.getAdminUser() + " " + admin.getAdminPass() +"\n\n\n");
         adminService.saveAdmin(admin);
         return "Your administrator account has been created";
     }

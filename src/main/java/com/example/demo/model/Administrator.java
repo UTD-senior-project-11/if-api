@@ -11,23 +11,23 @@ import jakarta.persistence.GeneratedValue;
 public class Administrator {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String adminID;
+    private int adminID;
     private String adminUser;
     private String adminPass;
 
     //Constructors
     public Administrator(){
-        this.adminID = generateAdminID();
+        //this.adminID = generateAdminID();
     }
 
     public Administrator(String adminUser, String adminPass){
-        this.adminID = generateAdminID();
+        //this.adminID = generateAdminID();
         this.adminUser = adminUser;
         this.adminPass = adminPass;
     }
 
     //Accessors
-    public String getAdminID(){
+    public int getAdminID(){
         return adminID; 
     }
 
@@ -40,7 +40,7 @@ public class Administrator {
     }
 
     //Mutators
-    public void setAdminID(String adminID){
+    public void setAdminID(int adminID){
         this.adminID = adminID;
     }
 
