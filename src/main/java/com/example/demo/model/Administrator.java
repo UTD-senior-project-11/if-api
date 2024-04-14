@@ -17,11 +17,11 @@ public class Administrator {
 
     //Constructors
     public Administrator(){
-        //this.adminID = generateAdminID();
+        this.adminID = Integer.parseInt(generateAdminID());
     }
 
     public Administrator(String adminUser, String adminPass){
-        //this.adminID = generateAdminID();
+        this.adminID = Integer.parseInt(generateAdminID());
         this.adminUser = adminUser;
         this.adminPass = adminPass;
     }

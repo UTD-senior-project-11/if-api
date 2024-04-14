@@ -12,7 +12,7 @@ import com.example.demo.model.Administrator;
 public interface AdminRepository extends JpaRepository<Administrator, String> {
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO Administrator (adminUser, adminPass) VALUES (?1, ?2)", nativeQuery = true)
-    public void saveAdministrator(String adminUser, String adminPass);
+    @Query(value = "INSERT INTO Administrator (adminID, adminUser, adminPass) VALUES (?1, ?2, ?3)", nativeQuery = true)
+    public void saveAdministrator(int adminID, String adminUser, String adminPass);
 
 }
