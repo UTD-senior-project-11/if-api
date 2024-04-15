@@ -15,8 +15,9 @@ public class AdminController {
 
     @PostMapping("/signup")
     public String signup(@RequestBody Administrator admin){
-        System.out.println("\n\n\n" + admin.getAdminID() + " " + admin.getAdminUser() + " " + admin.getAdminPass() +"\n\n\n");
-        adminService.saveAdmin(admin);
+        //System.out.println("\n\n\n" + admin.getAdminID() + " " + admin.getAdminUser() + " " + admin.getAdminPass() +"\n\n\n");
+        int index = adminService.getIndex();
+        adminService.saveAdmin(admin, index);
         return "Your administrator account has been created";
     }
 

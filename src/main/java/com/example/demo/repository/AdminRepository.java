@@ -15,4 +15,6 @@ public interface AdminRepository extends JpaRepository<Administrator, String> {
     @Query(value = "INSERT INTO Administrator (adminID, adminUser, adminPass) VALUES (?1, ?2, ?3)", nativeQuery = true)
     public void saveAdministrator(int adminID, String adminUser, String adminPass);
 
+    @Query(value = "SELECT COUNT(*) FROM Administrator", nativeQuery = true)
+    public int getLastRow();
 }

@@ -2,10 +2,14 @@ package com.example.demo.model;
 
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.GeneratedValue;
+
+
 
 @Entity
 public class Administrator {
@@ -17,11 +21,10 @@ public class Administrator {
 
     //Constructors
     public Administrator(){
-        this.adminID = Integer.parseInt(generateAdminID());
     }
 
     public Administrator(String adminUser, String adminPass){
-        this.adminID = Integer.parseInt(generateAdminID());
+        //this.adminID = Integer.parseInt(generateAdminID());
         this.adminUser = adminUser;
         this.adminPass = adminPass;
     }
@@ -53,7 +56,7 @@ public class Administrator {
     }
 
     //Generate random Administrator ID for use as a primary key
-    public static String generateAdminID(){
+    /*public static String generateAdminID(){
         StringBuilder temp = new StringBuilder();
         String idCharSet = "0123456789";
         Random rand = new Random();
@@ -67,5 +70,5 @@ public class Administrator {
         String id = temp.toString();
 
         return id;
-    }
+    }*/
 }
