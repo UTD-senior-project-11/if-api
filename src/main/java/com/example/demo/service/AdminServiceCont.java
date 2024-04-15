@@ -20,4 +20,9 @@ public class AdminServiceCont implements AdminService {
     public int getIndex(){
         return adminRepository.getLastRow() + 1;
     }
+
+    @Override 
+    public int checkDuplicate(Administrator admin){
+        return adminRepository.noDuplicateUser(admin.getAdminUser());
+    }
 }

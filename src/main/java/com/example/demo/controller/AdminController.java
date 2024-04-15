@@ -17,8 +17,16 @@ public class AdminController {
     public String signup(@RequestBody Administrator admin){
         //System.out.println("\n\n\n" + admin.getAdminID() + " " + admin.getAdminUser() + " " + admin.getAdminPass() +"\n\n\n");
         int index = adminService.getIndex();
-        adminService.saveAdmin(admin, index);
-        return "Your administrator account has been created";
+        int numEntries = adminService.checkDuplicate(admin);
+        //System.out.println(numEntries);
+        if (numEntries > 0){
+            System.out.println("ERROR: PRE-EXISTING ACCOUNT");
+            return "Error; pre-existing account detected. Please log in to continue.";
+        } else {
+            adminService.saveAdmin(admin, index);
+            //System.out.println("\n\n"+admin.getAdminUser()+" "+index+" "+numEntries+"\n\n");
+            return "Your administrator account has been created.";
+        }
     }
 
     //@PostMapping("/login") //Finish
