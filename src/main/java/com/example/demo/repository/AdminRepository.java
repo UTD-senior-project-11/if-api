@@ -20,4 +20,7 @@ public interface AdminRepository extends JpaRepository<Administrator, String> {
 
     @Query(value = "SELECT COUNT(*) FROM Administrator WHERE adminUser = ?1", nativeQuery = true)
     public int noDuplicateUser(String adminUser);
+
+    @Query(value = "SELECT COUNT(*) FROM Administrator WHERE adminUser = ?1 AND adminPass = ?2", nativeQuery = true)
+    public int sameUser(String adminUser, String adminPass);
 }

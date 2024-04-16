@@ -9,4 +9,6 @@ public interface AdminService {
     public int getIndex();
 
     public int checkDuplicate(Administrator admin);
+
+    public int checkIfAdmin(Administrator admin);
 }

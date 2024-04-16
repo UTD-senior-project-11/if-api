@@ -25,4 +25,9 @@ public class AdminServiceCont implements AdminService {
     public int checkDuplicate(Administrator admin){
         return adminRepository.noDuplicateUser(admin.getAdminUser());
     }
+
+    @Override
+    public int checkIfAdmin(Administrator admin){
+        return adminRepository.sameUser(admin.getAdminUser(), admin.getAdminPass());
+    }
 }
