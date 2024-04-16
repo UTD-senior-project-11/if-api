@@ -41,11 +41,11 @@ public class AdminController {
     public String login(@RequestBody Administrator admin){
         if (adminService.checkIfAdmin(admin) == 1){
             updateLoginStatus(true);
-            System.out.println("\n"+getLoginStatus()+"\n");
+            System.out.println("\n"+getLoginStatus()+"\n"); //Test statement
             return "Account found";
         } else {
             updateLoginStatus(false);
-            System.out.println("\n"+getLoginStatus()+"\n");
+            System.out.println("\n"+getLoginStatus()+"\n"); //Test statement
             return "Account not found";
         }
     }

@@ -15,7 +15,9 @@ public class ImageController {
 
     @PostMapping("/add")
     public String add(@RequestBody Image image){
-        imageService.saveImage(image);
+        image.getBase();
+        //System.out.println("\n"+image.getImageData()+"\n");
+        //imageService.saveImage(image);
         return "New image has been added.";
     }
 
