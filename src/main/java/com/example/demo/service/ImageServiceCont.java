@@ -12,6 +12,6 @@ public class ImageServiceCont implements ImageService {
 
     @Override
     public void saveImage(Image image){
-        imageRepository.saveImage(image.getImageID(), image.getImageData(), image.getImageSize(), image.getBannedStatus());
+        //imageRepository.saveImage(image.getImageID(), image.getImageData(), image.getImageSize(), image.getBannedStatus());
     }
 }

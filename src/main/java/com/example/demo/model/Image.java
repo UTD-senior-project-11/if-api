@@ -6,6 +6,8 @@ import java.util.*;
 import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialException;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GenerationType;
@@ -16,7 +18,8 @@ public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int imageID;
-    private Blob imageData;
+    @JsonProperty
+    private String image;
     private String base64;
     private int imageSize;
     private boolean bannedStatus = true;
@@ -37,14 +40,14 @@ public class Image {
     public Image(int imageID, String imageData, boolean bannedStatus) throws SQLException{
         this.imageID = imageID;
         setImageData(imageData);
-        setImageSize(this.imageData);
+        //setImageSize(this.image);
         this.bannedStatus = bannedStatus;
     }
 
     //Accessors
     public int getImageID(){return imageID;}
 
-    public Blob getImageData(){return imageData;}
+    public String getImageData(){return image;}
 
     public int getImageSize(){return imageSize;}
 
@@ -58,7 +61,7 @@ public class Image {
         //this.imageData = new SerialBlob(b);
     }
 
-    public void setImageData(Blob imageData){this.imageData = imageData;}
+    //public void setImageData(Blob imageData){this.image = imageData;}
 
     public void setImageSize(Blob imageData) throws SQLException{
         byte b[] = imageData.getBytes(1, (int)imageData.length());
