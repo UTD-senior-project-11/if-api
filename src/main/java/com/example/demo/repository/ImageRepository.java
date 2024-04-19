@@ -15,7 +15,7 @@ public interface ImageRepository extends JpaRepository<Image, Integer> {
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO Image (imageID, imageData, imageSizeKB, bannedStatus) VALUES (?1, ?2, ?3, ?4)", nativeQuery = true)
-    public void saveImage(int imageID, Blob imageData, int imageSize, Boolean bannedStatus);
+    public void saveImage(int imageID, String imageData, int imageSize, Boolean bannedStatus);
 
     @Query(value = "SELECT COUNT(*) FROM Image", nativeQuery = true)
     public int getLastRow();
@@ -24,5 +24,5 @@ public interface ImageRepository extends JpaRepository<Image, Integer> {
     public int noDuplicate(Blob imageData);
 
     @Query(value = "SELECT imageData FROM Image", nativeQuery = true)
-    public List<Blob> getAllImages();
+    public List<String> getAllImages();
 }

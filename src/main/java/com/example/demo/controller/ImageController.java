@@ -41,5 +41,4 @@ public class ImageController {
         imageService.getAllImages();
         return "Images provided.";
     }
-
 }

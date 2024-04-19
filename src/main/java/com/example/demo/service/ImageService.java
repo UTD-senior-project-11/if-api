@@ -12,5 +12,5 @@ public interface ImageService {
 
     public int checkDuplicate(Image image);
 
-    public List<Blob> getAllImages();
+    public List<String> getAllImages();
 }

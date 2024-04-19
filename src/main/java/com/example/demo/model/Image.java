@@ -22,7 +22,7 @@ public class Image {
     private Blob imageData;
     @JsonProperty
     private String base64; //Encoded base64 String
-    private String image64; //Copy of 
+    private String image64; //Local copy of base64 String (used to manipulate object values)
     private int imageSizeKB;
     private boolean bannedStatus = true;
     
@@ -34,18 +34,9 @@ public class Image {
         //System.out.println(base64);
     }
 
-    public String getBase(){
-        //System.out.println(image64.substring(0, 20));
-        //String test = base64.substring(0,200);
-        //System.out.println(test);
-        //test = base64;
-        //System.out.println(test);
-        return image64;
-    }
+    public String getBase(){return image64;}
 
-    public void setBase(){
-        image64 = base64;
-    }
+    public void setBase(){image64 = base64;}
 
     //Accessors
     public int getImageID(){return imageID;}
@@ -64,7 +55,7 @@ public class Image {
     public void setImageData(String data) throws SerialException, SQLException{
         byte[] imageByte = Base64.getDecoder().decode(data);
         this.imageData = new SerialBlob(imageByte);
-        System.out.println(imageData.length());
+        //System.out.println(imageData.length());
     }
 
     public void setImageSize(Blob imageData) throws SQLException{
