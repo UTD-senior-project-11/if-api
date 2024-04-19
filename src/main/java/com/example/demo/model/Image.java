@@ -31,6 +31,7 @@ public class Image {
     public Image(){}
 
     public Image(String base64) throws SerialException, SQLException{
+        this.base64 = base64;
         //System.out.println(base64);
     }
 
