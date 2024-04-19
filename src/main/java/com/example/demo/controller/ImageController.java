@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.sql.SQLException;
+import java.util.*;
 
 import javax.sql.rowset.serial.SerialException;
 
@@ -37,8 +38,7 @@ public class ImageController {
     }
 
     @GetMapping("/getAll")
-    public String getAll(){
-        imageService.getAllImages();
-        return "Images provided.";
+    public List<String> getAll(){
+        return imageService.getAllImages();
     }
 }
