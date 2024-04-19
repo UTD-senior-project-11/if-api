@@ -7,7 +7,7 @@ import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialException;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.mysql.cj.util.Base64Decoder;
+//import com.mysql.cj.util.Base64Decoder;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -21,9 +21,9 @@ public class Image {
     private int imageID;
     private Blob imageData;
     @JsonProperty
-    private String base64;
-    private String image64;
-    private int imageSize;
+    private String base64; //Encoded base64 String
+    private String image64; //Copy of 
+    private int imageSizeKB;
     private boolean bannedStatus = true;
     
 
@@ -54,7 +54,7 @@ public class Image {
 
     public String getImageDataString(){return imageData.toString();}
 
-    public int getImageSize(){return imageSize;}
+    public int getImageSize(){return imageSizeKB;}
 
     public boolean getBannedStatus(){return bannedStatus;}
 
@@ -64,11 +64,12 @@ public class Image {
     public void setImageData(String data) throws SerialException, SQLException{
         byte[] imageByte = Base64.getDecoder().decode(data);
         this.imageData = new SerialBlob(imageByte);
+        System.out.println(imageData.length());
     }
 
     public void setImageSize(Blob imageData) throws SQLException{
         byte b[] = imageData.getBytes(1, (int)imageData.length());
-        this.imageSize = b.length;
+        this.imageSizeKB = b.length / 1000;
     }
 
     public void setBannedStatus(boolean bannedStatus){this.bannedStatus = bannedStatus;}

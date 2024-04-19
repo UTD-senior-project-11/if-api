@@ -19,12 +19,27 @@ public class ImageController {
 
     @PostMapping("/add")
     public String add(@RequestBody Image image) throws SerialException, SQLException{
+        //Fill out image object
         image.setBase();
         image.setImageData(image.getBase());
-        //System.out.println(image.getImageDataString());
-        //System.out.println("\n"+image.getImageData()+"\n");
-        //imageService.saveImage(image);
-        return "New image has been added.";
+        image.setImageSize(image.getImageData());
+        image.setImageID(imageService.getIndex());
+
+        //Add to DB
+        int numEntries = imageService.checkDuplicate(image);
+        if (numEntries > 0){
+            System.out.println("ERROR; IMAGE PRESENT WITHIN TABLE");
+            return "Error; image already exists within table.";
+        } else {
+            imageService.saveImage(image);
+            return "New image has been added.";
+        }
+    }
+
+    @GetMapping("/getAll")
+    public String getAll(){
+        imageService.getAllImages();
+        return "Images provided.";
     }
 
 }
