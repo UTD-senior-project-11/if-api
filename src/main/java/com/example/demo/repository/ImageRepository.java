@@ -21,7 +21,7 @@ public interface ImageRepository extends JpaRepository<Image, Integer> {
     public int getLastRow();
 
     @Query(value = "SELECT COUNT(*) FROM Image WHERE imageData = ?1", nativeQuery = true)
-    public int noDuplicate(Blob imageData);
+    public int noDuplicate(String imageData);
 
     @Query(value = "SELECT imageData FROM Image", nativeQuery = true)
     public List<String> getAllImages();

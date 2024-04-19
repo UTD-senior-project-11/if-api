@@ -25,7 +25,7 @@ public class ImageServiceCont implements ImageService {
 
     @Override
     public int checkDuplicate(Image image){
-        return imageRepository.noDuplicate(image.getImageData());
+        return imageRepository.noDuplicate(image.getBase());
     }
 
     @Override
