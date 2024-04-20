@@ -1,6 +1,6 @@
 package com.example.demo.repository;
 
-import java.sql.*;
+//import java.sql.*;
 import java.util.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -25,4 +25,12 @@ public interface ImageRepository extends JpaRepository<Image, Integer> {
 
     @Query(value = "SELECT imageData FROM Image", nativeQuery = true)
     public List<String> getAllImages();
+
+    @Query(value = "SELECT * FROM Image WHERE imageID = (SELECT MAX(imageID) FROM Image)", nativeQuery = true)
+    public Image getLastEntry();
+
+    @Modifying
+    @Transactional
+    @Query(value = "DELETE FROM Image ORDER BY ImageID DESC limit 1", nativeQuery = true)
+    public void deleteLastEntry();
 }

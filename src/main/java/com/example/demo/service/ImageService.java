@@ -2,7 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.model.Image;
 import java.util.*;
-import java.sql.*;
+//import java.sql.*;
 
 //Needs more (to link with AI)
 public interface ImageService {
@@ -13,4 +13,8 @@ public interface ImageService {
     public int checkDuplicate(Image image);
 
     public List<String> getAllImages();
+
+    public Image getLast();
+
+    public void deleteLast();
 }

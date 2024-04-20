@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.example.demo.model.Image;
 import com.example.demo.service.ImageService;
-import com.example.demo.service.ImageServiceCont;
+//import com.example.demo.service.ImageServiceCont;
 
 @RestController
 @RequestMapping("image")
@@ -18,6 +18,7 @@ public class ImageController {
     @Autowired
     private ImageService imageService;
 
+    //Add image to DB
     @PostMapping("/add")
     public String add(@RequestBody Image image) throws SerialException, SQLException{
         //Fill out image object
@@ -37,8 +38,21 @@ public class ImageController {
         }
     }
 
+    //Get images from DB for display grid
     @GetMapping("/getAll")
     public List<String> getAll(){
         return imageService.getAllImages();
+    }
+
+    //Send image to AI for comparison
+    @PostMapping("/compare")
+    public String compareImages(){
+        return "Test";
+    }
+
+    //Forward result of comparison to UI
+    @GetMapping("/compareresult")
+    public boolean compareResult(){
+        return true;
     }
 }

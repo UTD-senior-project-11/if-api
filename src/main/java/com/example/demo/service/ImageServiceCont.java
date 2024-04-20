@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
 import java.util.*;
-import java.sql.*;
+//import java.sql.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,5 +31,15 @@ public class ImageServiceCont implements ImageService {
     @Override
     public List<String> getAllImages(){
         return imageRepository.getAllImages();
+    }
+
+    @Override
+    public Image getLast(){
+        return imageRepository.getLastEntry();
+    }
+
+    @Override
+    public void deleteLast(){
+        imageRepository.deleteLastEntry();
     }
 }

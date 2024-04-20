@@ -1,15 +1,13 @@
 package com.example.demo.model;
 
-import java.util.Random;
+//import java.util.Random;
 
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.GeneratedValue;
-
-
 
 @Entity
 public class Administrator {

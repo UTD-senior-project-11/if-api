@@ -3,7 +3,7 @@ package com.example.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.example.demo.service.AdminService;
-import com.example.demo.service.AdminServiceCont;
+//import com.example.demo.service.AdminServiceCont;
 import com.example.demo.model.Administrator;
 
 @RestController
@@ -41,11 +41,11 @@ public class AdminController {
     public String login(@RequestBody Administrator admin){
         if (adminService.checkIfAdmin(admin) == 1){
             updateLoginStatus(true);
-            System.out.println("\n"+getLoginStatus()+"\n"); //Test statement
+            //System.out.println("\n"+getLoginStatus()+"\n"); //Test statement
             return "Account found";
         } else {
             updateLoginStatus(false);
-            System.out.println("\n"+getLoginStatus()+"\n"); //Test statement
+            //System.out.println("\n"+getLoginStatus()+"\n"); //Test statement
             return "Account not found";
         }
     }

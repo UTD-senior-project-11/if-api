@@ -35,22 +35,28 @@ public class Image {
         //System.out.println(base64);
     }
 
-    public String getBase(){return image64;}
-
-    public void setBase(){image64 = base64;}
+    public Image(int imageID, String encoded, int imageSize, boolean bannedStatus) throws SerialException, SQLException{
+        this.imageID = imageID;
+        image64 = encoded;
+        setImageData(encoded);
+        imageSizeKB = imageSize;
+        this.bannedStatus = bannedStatus;
+    }
 
     //Accessors
+    public String getBase(){return image64;}
+
     public int getImageID(){return imageID;}
 
     public Blob getImageData(){return imageData;}
-
-    public String getImageDataString(){return imageData.toString();}
 
     public int getImageSize(){return imageSizeKB;}
 
     public boolean getBannedStatus(){return bannedStatus;}
 
     //Mutators
+    public void setBase(){image64 = base64;}
+
     public void setImageID(int imageID){this.imageID = imageID;}
 
     public void setImageData(String data) throws SerialException, SQLException{
