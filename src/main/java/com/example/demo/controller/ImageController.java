@@ -46,13 +46,29 @@ public class ImageController {
 
     //Send image to AI for comparison
     @PostMapping("/compare")
-    public String compareImages(){
+    public String compareImages(@RequestBody Image image) throws SQLException{
+        //Fill out image object
+        image.setBase();
+        image.setImageData(image.getBase());
+        image.setImageSize(image.getImageData());
+        image.setImageID(imageService.getIndex());
+
+        //Store image (temporarily)
+        imageService.saveImage(image);
+
+
+        
         return "Test";
     }
 
     //Forward result of comparison to UI
     @GetMapping("/compareresult")
     public boolean compareResult(){
-        return true;
+        Image tempImage = imageService.getLast();
+        imageService.deleteLast();
+
+        
+
+        return tempImage.getBannedStatus();
     }
 }
