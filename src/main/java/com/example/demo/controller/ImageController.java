@@ -85,11 +85,15 @@ public class ImageController {
                     response.append(inputLine);
                 }
                 in.close();
+            } else {
+                System.out.println("ERROR: FAILED TO CONNECT");
             }
 
         } catch (IOException ex) {
             System.out.println(ex);
         }
+
+        System.out.println(response); //Test
 
         //Verify if the image should be added based on returned status
         //Dogs are banned, cats are not        
