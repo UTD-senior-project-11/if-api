@@ -90,11 +90,27 @@ public class ImageController {
         } catch (IOException ex) {
             System.out.println(ex);
         }
+
+        //Verify if the image should be added based on returned status
+        //Dogs are banned, cats are not        
+        if (response.toString().equals("C")){
+            imageService.deleteLast();
+        } else if (response.toString().equals("D")){
+            //Check if added image was actually a duplicate; delete if true
+            int numEntries = imageService.checkDuplicate(image);
+            if (numEntries > 1){
+                System.out.println("ERROR: DUPLICATE IMAGE");
+                imageService.deleteLast();
+            } else {
+                System.out.println("Valid entry.");
+            }
+        }
         
         return response.toString();
     }
 
     //Forward result of comparison to UI
+    /*
     @GetMapping("/compareresult")
     public boolean compareResult(){
         Image tempImage = imageService.getLast();
@@ -104,4 +120,5 @@ public class ImageController {
 
         return tempImage.getBannedStatus();
     }
+    */
 }
