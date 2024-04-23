@@ -1,5 +1,9 @@
 package com.example.demo.controller;
 
+import java.io.*;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.*;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -10,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import com.example.demo.model.Image;
 import com.example.demo.service.ImageService;
 //import com.example.demo.service.ImageServiceCont;
+
+
 
 @RestController
 @RequestMapping("image")
@@ -46,19 +52,46 @@ public class ImageController {
 
     //Send image to AI for comparison
     @PostMapping("/compare")
-    public String compareImages(@RequestBody Image image) throws SQLException{
+    public String compareImages(@RequestBody Image image) throws SQLException, MalformedURLException{
         //Fill out image object
         image.setBase();
         image.setImageData(image.getBase());
         image.setImageSize(image.getImageData());
         image.setImageID(imageService.getIndex());
 
-        //Store image (temporarily)
+        //Store image (temporarily if not banned)
         imageService.saveImage(image);
-
-
         
-        return "Test";
+        //Connect to AI API
+        StringBuffer response = new StringBuffer();
+        try {
+            URL url = new URL("http://localhost:5000/sendimages");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+
+            conn.setDoOutput(true);
+		    OutputStream os = conn.getOutputStream();
+		    os.write(image.getBase().getBytes());
+		    os.flush();
+		    os.close();
+
+            int responseCode = conn.getResponseCode();
+            
+            String inputLine;
+            if (responseCode == HttpURLConnection.HTTP_OK){
+                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                
+                while ((inputLine = in.readLine()) != null){
+                    response.append(inputLine);
+                }
+                in.close();
+            }
+
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+        
+        return response.toString();
     }
 
     //Forward result of comparison to UI
