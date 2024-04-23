@@ -1,8 +1,6 @@
 package com.example.demo.controller;
 
 import java.io.*;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.*;
 import java.sql.SQLException;
 import java.util.*;
@@ -14,8 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import com.example.demo.model.Image;
 import com.example.demo.service.ImageService;
 //import com.example.demo.service.ImageServiceCont;
-
-
 
 @RestController
 @RequestMapping("image")
@@ -79,6 +75,7 @@ public class ImageController {
             
             String inputLine;
             if (responseCode == HttpURLConnection.HTTP_OK){
+                System.out.println("AI: CONNECTION ESTABLISHED");
                 BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                 
                 while ((inputLine = in.readLine()) != null){
@@ -93,7 +90,7 @@ public class ImageController {
             System.out.println(ex);
         }
 
-        System.out.println(response); //Test
+        //System.out.println(response); //Test
 
         //Verify if the image should be added based on returned status
         //Dogs are banned, cats are not        
